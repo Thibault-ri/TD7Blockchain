@@ -70,6 +70,9 @@ class App extends Component {
             Network = {this.state.network}
             Your account = {this.state.account}
             Chain Id = {this.state.chain_id}
+            Last block number = {this.state.last_block}
+            Token name = {this.state.name_token}
+            Counter of token = {this.state.counter_token}
             />
         }
       </div>
