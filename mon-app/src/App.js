@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Web3 from 'web3';
 import React, { Component } from 'react';
 import erc721_abi from './abis/ERC721.json'
+import addresse from './abis/adresse_contract.json'
 import Navbar from './Navbar'
 import Main from './Main'
 
@@ -58,17 +59,19 @@ class App extends Component {
     await this.loadWeb3()
     await this.loadBlockchainData()
   }
-  
+
   render() {
     return (
-      <div className="container">        
-        <h1 style={{textAlign:"center"}}>TD07 !</h1><br></br>
-        <p>Network : {this.state.network}</p>
-        <p>Your account : {this.state.account}</p>
-        <p>Chain Id : {this.state.chain_id}</p>
-        <p>Last block number : {this.state.last_block}</p>
-        <p>Token name : {this.state.name_token}</p>
-        <p>Counter of token : {this.state.counter_token}</p>
+      <div>
+        <Navbar account={this.state.account} />
+        { this.state.loading
+          ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
+          : <Main
+            Network = {this.state.network}
+            Your account = {this.state.account}
+            Chain Id = {this.state.chain_id}
+            />
+        }
       </div>
     );
   }
